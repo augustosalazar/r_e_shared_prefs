@@ -1,3 +1,4 @@
+// app/state/AuthProvider.tsx
 import React, { useEffect } from "react"; // Add this import
 import PrefsService from "../services/prefs_service"; // Import SharedPrefsService
 

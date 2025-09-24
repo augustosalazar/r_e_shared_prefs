@@ -1,3 +1,4 @@
+// app/_layout.tsx
 import { Stack } from "expo-router";
 import React from "react";
 import { Provider as PaperProvider } from "react-native-paper";
@@ -7,19 +8,10 @@ export default function RootLayout() {
   return (
     <PaperProvider>
       <AuthProvider>
-        <RootLayoutNav />
+        <Stack />
       </AuthProvider>
     </PaperProvider>
   );
 }
 
-function RootLayoutNav() {
-  return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="(app)" options={{ headerShown: false }} />
-      <Stack.Screen name="auth/sign-in" options={{ headerShown: false }} />
-      <Stack.Screen name="auth/sign-up" options={{ headerShown: false }} />
-    </Stack>
-  );
-}
+

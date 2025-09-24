@@ -1,17 +1,17 @@
 import { router } from "expo-router";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
 import { AppContext } from "../state/AuthProvider";
 
-export default function Signup() {
+export default function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
 
-    const { signupUser } = useContext(AppContext);
+    const { loginUser } = useContext(AppContext);
 
-    const handleSignup = async () => {
+    const handleLogin = async () => {
+        // Validate the form fields
         if (!email.trim()) {
             Alert.alert("Validation Error", "Email cannot be empty.");
             return;
@@ -20,30 +20,17 @@ export default function Signup() {
             Alert.alert("Validation Error", "Password cannot be empty.");
             return;
         }
-        if (!confirmPassword.trim()) {
-            Alert.alert("Validation Error", "Confirm Password cannot be empty.");
-            return;
-        }
-        if (password !== confirmPassword) {
-            Alert.alert("Validation Error", "Passwords do not match.");
-            return;
-        }
-
-        console.log("signupUser called with:", email, password);
-
         try {
-            await signupUser(email, password);
-            Alert.alert("Success", "Account created successfully! Please login.", [
-                { text: "OK", onPress: () => router.navigate("/auth/sign-in") }
-            ]);
+            await loginUser(email, password);
+            console.log("Login successful");
         } catch (error) {
-            Alert.alert("Signup Error", error instanceof Error ? error.message : "An error occurred");
+            Alert.alert("Login Error", error instanceof Error ? error.message : "An error occurred");
         }
     };
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Sign Up</Text>
+            <Text style={styles.title}>Login</Text>
             <TextInput
                 label="Email"
                 value={email}
@@ -59,22 +46,15 @@ export default function Signup() {
                 secureTextEntry
                 style={styles.input}
             />
-            <TextInput
-                label="Confirm Password"
-                value={confirmPassword}
-                onChangeText={setConfirmPassword}
-                secureTextEntry
-                style={styles.input}
-            />
-            <Button mode="contained" onPress={handleSignup} style={styles.button}>
-                Signup
+            <Button mode="contained" onPress={handleLogin} style={styles.button}>
+                Login
             </Button>
             <Button
                 mode="text"
-                onPress={() => router.navigate("/auth/sign-in")}
+                onPress={() => router.navigate("/(auth)/sign-up")}
                 style={styles.button}
             >
-                Already have an account? Login
+                Create an account
             </Button>
         </View>
     );
@@ -84,16 +64,16 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 16,
-        justifyContent: "center"
+        justifyContent: "center",
     },
     title: {
         fontSize: 24,
         fontWeight: "bold",
         textAlign: "center",
-        marginBottom: 24
+        marginBottom: 24,
     },
     input: {
-        marginBottom: 16
+        marginBottom: 16,
     },
-    button: {}
+    button: {},
 });
