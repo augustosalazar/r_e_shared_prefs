@@ -1,7 +1,7 @@
-import { View } from "react-native";
-import { AppText } from "@/components/AppText";
+import { AppText } from "@/src/components/AppText";
+import { Button } from "@/src/components/Button";
 import { Link } from "expo-router";
-import { Button } from "@/components/Button";
+import { View } from "react-native";
 
 export default function ModalWithStackScreen() {
   return (

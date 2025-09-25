@@ -1,7 +1,7 @@
-import { View } from "react-native";
-import { AppText } from "@/components/AppText";
-import { Button } from "@/components/Button";
+import { AppText } from "@/src/components/AppText";
+import { Button } from "@/src/components/Button";
 import { useRouter } from "expo-router";
+import { View } from "react-native";
 
 export default function ThirdScreen() {
   const router = useRouter();

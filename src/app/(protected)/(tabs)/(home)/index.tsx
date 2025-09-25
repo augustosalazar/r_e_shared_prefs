@@ -1,8 +1,8 @@
-import { Alert, View, Modal } from "react-native";
-import { AppText } from "@/components/AppText";
+import { AppText } from "@/src/components/AppText";
+import { Button } from "@/src/components/Button";
 import { Link, useRouter } from "expo-router";
-import { Button } from "@/components/Button";
 import { useState } from "react";
+import { Alert, Modal, View } from "react-native";
 
 export default function IndexScreen() {
   const router = useRouter();
@@ -69,7 +69,7 @@ export default function IndexScreen() {
       >
         <View className="flex-1 items-center justify-center">
           <View className="p-12 rounded-lg bg-white">
-            <AppText center size="heading">
+            <AppText >
               A custom styled modal!
             </AppText>
             <Button

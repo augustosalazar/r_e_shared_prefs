@@ -1,9 +1,11 @@
 import { View } from "react-native";
-import { AppText } from "@/components/AppText";
-import { Button } from "@/components/Button";
+
+import { AppText } from "@/src/components/AppText";
+import { Button } from "@/src/components/Button";
+import { AuthContext } from "@/src/utils/authContext";
 import { useRouter } from "expo-router";
 import { useContext } from "react";
-import { AuthContext } from "@/utils/authContext";
+
 
 export default function FourthScreen() {
   const router = useRouter();
